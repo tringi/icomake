@@ -27,25 +27,25 @@ Windows icon loader iterates over all icons in file, assessing difference betwee
 In attempt to save it a few cycles and trigger the early return on match, this tool places the most probable icons first. It also honors Microsoft's guidelines for XP software by placing the most common 9 icon sizes first. If all resolutions were available, the order would be following:
 
 1. 48×48×32
-* 32×32×32
-* 16×16×32
-* 48×48×8
-* 32×32×8
-* 16×16×8
-* 48×48×4
-* 32×32×4
-* 16×16×4
-* 48×48×24
-* 32×32×24
-* 16×16×24
-* 24×24×32
-* 24×24×8
-* 24×24×4
-* 24×24×24
-* ?×?×32 (from smallest to largest)
-* ?×?×24 (from smallest to largest)
-* ?×?×8 (from smallest to largest)
-* ?×?×4 (from smallest to largest)
-* ?×?×1 (from smallest to largest)
+1. 32×32×32
+1. 16×16×32
+1. 48×48×8
+1. 32×32×8
+1. 16×16×8
+1. 48×48×4
+1. 32×32×4
+1. 16×16×4
+1. 48×48×24
+1. 32×32×24
+1. 16×16×24
+1. 24×24×32
+1. 24×24×8
+1. 24×24×4
+1. 24×24×24
+1. ?×?×32 (from smallest to largest)
+1. ?×?×24 (from smallest to largest)
+1. ?×?×8 (from smallest to largest)
+1. ?×?×4 (from smallest to largest)
+1. ?×?×1 (from smallest to largest)
 
 *Of course, whether this is the best order is open for a debate.*
