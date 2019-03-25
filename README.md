@@ -10,9 +10,9 @@ Input file formats supported:
 * Any existing ICO containing either uncompressed bitmaps (BMPs) or PNGs
 * 32-bit PNGs (with alpha channel) up to 256×256 pixels in size.
 
-Outputs single ICO file containing all input images, as provided (no conversion is done).
+Outputs single ICO file containing all input images.
 
-* If multiple images of the same resolution and color depth, the last (in order of appearing on the command line) is used, i.e. you can use the tool to replace single sub-image within existing .ico file.
+* If multiple images of the same resolution and color depth are provided, the last (in order of appearing on the command line) is used, i.e. you can use the tool to replace single sub-image within existing .ico file.
 
 ## PNG icons
 
