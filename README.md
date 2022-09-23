@@ -12,11 +12,11 @@ Input file formats supported:
 
 Outputs single ICO file containing all input images.
 
-* If multiple images of the same resolution and color depth are provided, the last (in order of appearing on the command line) is used, i.e. you can use the tool to replace single sub-image within existing .ico file.
+* If multiple images of the same resolution and color depth are provided, the last (in order it appears on the command line) is used, i.e. you can use the tool to replace single sub-image within existing .ico file.
 
 ## PNG icons
 
-Windows Vista and later supports ICO files that containing PNG sub-images. Most graphics applications (at least those that I use) will only save the 256×256 one as PNG, but all, even 16×16, can safely be PNGs too. Thus enter the purpose of this tool, as PNGs are by magnitudes smaller than uncompressed bitmaps.
+Windows Vista and later supports ICO files that contain PNG sub-images. Most graphics applications (at least those that I use) will only save the 256×256 one as PNG, but all, even 16×16, can safely be PNGs too. Thus enter the purpose of this tool, as PNGs are by magnitudes smaller than uncompressed bitmaps.
 
 **Note:** In order for ICOs to show on Windows XP and older, and perhaps other OSs, at least some icons should be stored as bitmaps. At least 32×32 icon, ideally also 16×16, 24×24, and 48×48. This tool does not and can not convert PNG to BMP ICO.
 
