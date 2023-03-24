@@ -232,21 +232,33 @@ int main (int argc, char ** argv) {
                 std::printf ("%u icons...\n", (unsigned int) data.size ());
 
                 for (const auto & [ico, src] : data) {
-                    std::fseek (src.file, src.offset, SEEK_SET);
-                    std::printf (" [%ux%ux%u] %s from %08x:%u to %08x\n",
-                                 ico.width, ico.height, ico.bpp, src.source, src.offset, src.size, src.target);
-
-                    auto amount = src.size;
                     char page [65536];
 
+                    std::fseek (src.file, src.offset, SEEK_SET);
+
+                    const char * type = "UNK";
+                    if (std::fread (page, sizeof PngHeaderBytes, 1, src.file)) {
+                        if (std::memcmp (page, PngHeaderBytes, sizeof PngHeaderBytes) == 0) {
+                            type = "PNG";
+                        } else {
+                            type = "ICO";
+                        }
+                    }
+
+                    std::printf (" [%ux%ux%u] %s (%s) from %08x:%u to %08x\n",
+                                 ico.width, ico.height, ico.bpp, src.source, type, src.offset, src.size, src.target);
+
+                    auto offset = sizeof PngHeaderBytes;
+                    auto amount = src.size;
                     while (amount >= sizeof page) {
-                        if (std::fread (page, sizeof page, 1, src.file) && std::fwrite (page, sizeof page, 1, f)) {
+                        if (std::fread (page + offset, sizeof page - offset, 1, src.file) && std::fwrite (page, sizeof page, 1, f)) {
                             amount -= sizeof page;
+                            offset = 0;
                         } else
                             goto failed;
                     }
                     if (amount != 0) {
-                        if (!std::fread (page, amount, 1, src.file) || !std::fwrite (page, amount, 1, f))
+                        if (!std::fread (page + offset, amount - offset, 1, src.file) || !std::fwrite (page, amount, 1, f))
                             goto failed;
                     }
                 }
