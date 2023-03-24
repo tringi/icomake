@@ -123,13 +123,13 @@ int main (int argc, char ** argv) {
 
             if (auto f = std::fopen (*source, "rb")) {
 
-                char header [32];
+                unsigned char header [32];
                 if (auto n = std::fread (header, 1, sizeof header, f)) {
 
                     // PNG?
                     if ((n >= 29)
                         && (std::memcmp (header, PngHeaderBytes, sizeof PngHeaderBytes) == 0)
-                        && (std::strncmp (&header [12], "IHDR", 4) == 0)) {
+                        && (std::strncmp ((const char *) &header [12], "IHDR", 4) == 0)) {
 
                         unsigned int width = (header [16] << 24) | (header [17] << 16) | (header [18] << 8) | (header [19] << 0);
                         unsigned int height = (header [20] << 24) | (header [21] << 16) | (header [22] << 8) | (header [23] << 0);
